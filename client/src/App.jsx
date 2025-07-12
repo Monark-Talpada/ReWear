@@ -7,6 +7,7 @@ import { Toaster } from "sonner";
 import Landing from "./pages/Landing";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
+import ItemPage from "./pages/ItemPage";
 
 const App = () => {
   const { isLoading, isAuthenticated, user } = useAuth();
@@ -15,7 +16,6 @@ const App = () => {
     <div>
       <Routes>
         <Route path="/" element={<Landing />} />
-
         <Route
           path="/signup"
           element={
@@ -28,12 +28,11 @@ const App = () => {
             !isAuthenticated ? <Login /> : <Navigate to={"/dashboard"} />
           }
         />
-
         <Route
           path="/dashboard"
           element={isAuthenticated ? <Dashboard /> : <Navigate to={"/login"} />}
         />
-        <Route path="/item/:itemId" />
+        <Route path="/item/:itemId" element={<ItemPage />} />{" "}
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster richColors />
