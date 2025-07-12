@@ -69,6 +69,7 @@ export const login = async (req, res) => {
         email: user.email,
         role: user.role,
         points: user.points,
+        profileImage: user.profileImage,
       },
     });
   } catch (error) {
@@ -90,6 +91,7 @@ export const getAuthUser = async (req, res) => {
         email: user.email,
         role: user.role,
         points: user.points,
+        profileImage: user.profileImage,
       },
     });
   } catch (error) {

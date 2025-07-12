@@ -1,6 +1,8 @@
 import express from "express";
 import { errorHandler } from "./utils/errorHandler.js";
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/user.js";
+import itemRoutes from "./routes/item.js";
 import dotenv from "dotenv";
 import morgan from "morgan";
 import cookieParser from "cookie-parser";
@@ -30,6 +32,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", authRoutes);
+app.use("/api/user", userRoutes);
+app.use("/api/item", itemRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

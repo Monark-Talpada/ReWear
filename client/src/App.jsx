@@ -33,6 +33,7 @@ const App = () => {
           path="/dashboard"
           element={isAuthenticated ? <Dashboard /> : <Navigate to={"/login"} />}
         />
+        <Route path="/item/:itemId" />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster richColors />

@@ -10,6 +10,11 @@ const userSchema = new mongoose.Schema(
     password: { type: String, required: true },
     role: { type: String, enum: ["user", "admin"], default: "user" },
     points: { type: Number, default: 0 },
+    profileImage: {
+      type: String,
+      default:
+        "https://res.cloudinary.com/demo/image/upload/v1690000000/default-avatar.png", // Optional default avatar
+    },
   },
   { timestamps: true }
 );

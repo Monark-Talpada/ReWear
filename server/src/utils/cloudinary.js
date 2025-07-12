@@ -1,5 +1,6 @@
-// config/cloudinary.js
 import { v2 as cloudinary } from "cloudinary";
+import dotenv from "dotenv";
+dotenv.config();
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -7,4 +8,12 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export default cloudinary;
+export const uploadToCloudinary = async (filePath, folder = "items") => {
+  try {
+    const result = await cloudinary.uploader.upload(filePath, { folder });
+    return result.secure_url;
+  } catch (error) {
+    console.error("Cloudinary Upload Error:", error);
+    throw new Error("Image upload failed");
+  }
+};
